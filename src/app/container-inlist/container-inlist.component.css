@@ -1,0 +1,13 @@
+.badge-active {
+    background-color:green;
+}
+.badge-inactive {
+    background-color: red;
+}
+.container-style {
+    margin: 1%;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: rgb(231, 236, 241);
+    margin-bottom: 3%;
+}
