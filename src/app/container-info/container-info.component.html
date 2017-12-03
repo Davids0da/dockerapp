@@ -1,13 +1,64 @@
+<h3 class="text-center">Container info</h3>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>
+            <strong>Container id:</strong>
+          </td>
+          <td>
+            <strong>Image name:</strong>
+          </td>
+          <td>
+            <strong>Command for start:</strong>
+          </td>
+          <td>
+            <strong>before:</strong>
+          </td>
+          <td>
+            <strong>Status:</strong>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> {{container?.Id}} </td>
+          <td> {{container?.Image}} </td>
+          <td> {{container?.Command}}</td>
+          <td> {{container?.Created}}</td>
+          <td> {{container?.State}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<div *ngIf="container.Ports.length">
+  <h3 class="text-center">Ports</h3>
   <div class="panel panel-primary">
-      <div class="panel-heading">Container info</div>
-      <div class="panel-body">
-         <p> Name: </p>
-         <p> Container id: </p>
-         <p> Image name: </p>
-         <p> Command for start: </p>
-         <p> Created before: </p>
-         <p> Status: </p>
-         <p> Ports: </p>
-      </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>IP</td>
+            <td>Private Port</td>
+            <td>Public Port</td>
+            <td>Type</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let port of container.Ports">
+            <td>{{port.IP}}</td>
+            <td>{{port.PrivatePort}}</td>
+            <td>{{port.PublicPort}}</td>
+            <td>{{port.Type}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  
+  </div>
+</div>
+<div *ngIf="!container.Ports.length" class="text-danger text-center">
+  <h4>This container has no ports!</h4>
+</div>

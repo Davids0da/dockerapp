@@ -1,11 +1,29 @@
-<div class="row container-style"> 
-  <div class="col-md-6">
-    <p> NAME: </p>
-    <p> ID: </p>
-  </div>
-  <div class="col-md-6">
-      <p>STATUS:</p>
-      <span class="badge badge-pill badge-active">Active</span>
-      <span class="badge badge-pill badge-inactive">Inactive</span>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <h3 class="text-center">Containers</h3>
+      <div *ngFor="let container of sortedContainers" class="row container-style">
+        <div class="col-md-6">
+          <p> IMAGE: {{container.Image | slice:0:15}} </p>
+          <p>
+            <a [routerLink]="['.', container.Id]">ID: {{container.Id | slice:0:15}}</a>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="col-md-6">
+            <p>STATUS: </p>
+            <span class="badge badge-pill" [ngClass]="{'badge-active': isActive(container), 'badge-inactive': !isActive(container)}">
+              {{isActive(container) ? 'Active' : 'Inactive'}}
+            </span>
+          </div>
+          <div class="col-md-6">
+              <button type="button" class="btn btn-danger" (click)="stopContainer(container)">STOP</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
