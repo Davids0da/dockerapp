@@ -10,14 +10,13 @@
           </p>
         </div>
         <div class="col-md-6">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <p>STATUS: </p>
             <span class="badge badge-pill" [ngClass]="{'badge-active': isActive(container), 'badge-inactive': !isActive(container)}">
               {{isActive(container) ? 'Active' : 'Inactive'}}
             </span>
-          </div>
-          <div class="col-md-6">
-              <button type="button" class="btn btn-danger" (click)="stopContainer(container)">STOP</button>
+            <button type="button" class="btn btn-danger" [ngClass]="{'display-none': !isActive(container)}" (click)="stopContainer(container)">STOP</button>
+            <button type="button" class="btn btn-success" [ngClass]="{'display-none': isActive(container)}" (click)="startContainer(container)">START</button>
           </div>
         </div>
       </div>

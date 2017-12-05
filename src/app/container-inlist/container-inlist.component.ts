@@ -16,7 +16,7 @@ export class ContainerInlistComponent implements OnInit {
 
   constructor(
     private dockerService: DockerService,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -24,7 +24,6 @@ export class ContainerInlistComponent implements OnInit {
       this.containers = containers;
       this.sortedContainers = this.containers.slice().filter(c => c.Command !== 'socat TCP-LISTEN:1234,fork UNIX-CONNECT:/var/run/docker.sock').sort((a, b) => a.State > b.State ? -1 : 1);
     });
-    
   }
 
   public isActive(container: Container): boolean {
@@ -35,5 +34,11 @@ export class ContainerInlistComponent implements OnInit {
     this.dockerService.stopContainer(container.Id).subscribe(() => {
       container.State = 'stopped';
     });
-  }x
+  }
+
+  public startContainer(container: Container) {
+    this.dockerService.startContainer(container.Id).subscribe(() => {
+      container.State = 'running'; 
+    });
+  }
 }

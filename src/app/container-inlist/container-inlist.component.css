@@ -7,13 +7,16 @@
 .display-none {
     display: none;
 }
+.display-block {
+    display: none;
+}
 .container-style {
     margin: 1%;
     border: 1px solid;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgb(231, 236, 241);
     margin-bottom: 3%;
 }
-.btn { 
-    margin-top: 15px;
+.btn {
+    margin: 10px 0 10px 0;
 }
