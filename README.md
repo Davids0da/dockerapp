@@ -11,3 +11,5 @@ export DOCKER_HOST=tcp://localhost:1234
 open -a Google\ Chrome --args --disable-web-security --user-data-dir
 
 ## Run some docker containers, and see what is going in the app. And if you do not have docker, and docker containers, i will present you on skype this App.
+
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
