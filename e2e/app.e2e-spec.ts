@@ -1,14 +1,21 @@
-import { AppPage } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('docker-app App', () => {
-  let page: AppPage;
+describe('first protractor test', function() {
+  it('should get title', function() {
+    browser.get('http://localhost:4200/');
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
-
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(browser.getTitle()).toEqual('Docker App');
   });
 });
+
+describe('second protractor test', function() {
+  it('should check some elements if they are presented', function() {
+    browser.get('http://localhost:4200/');
+
+    expect(element(by.css('.row')).isPresent()).toBe(true);
+    expect(element(by.css('.col-md-3')).isPresent()).toBe(true);
+    expect(element(by.css('.col-md-9')).isPresent()).toBe(true);
+  });
+});
+
+
